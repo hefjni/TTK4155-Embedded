@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <stdint.h>
+
 #include "SRAM_driver.h"
+#include <avr/io.h>
+#include "BitMacros.h"
 
 #ifndef SRAM_FIRST_ADDRESS
 #define SRAM_FIRST_ADDRESS 0x1800 // macro
@@ -28,5 +31,12 @@ char SRAM_read(uint16_t address){
 	
 	volatile char* ext_ram = SRAM_FIRST_ADDRESS;
 	return ext_ram[address];
+	
+}
+
+void SRAM_Init(void)
+{
+	MCUCR |= (1<<SRE);//Enable MCU external memory
+	SFIOR |= (1<<XMM2); // External Memory Enabled
 	
 }
