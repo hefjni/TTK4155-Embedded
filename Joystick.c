@@ -120,9 +120,9 @@ int joystick_button(usb_button_t button){
 		case JOYSTICKBUTTON :
 		return !test_bit(PINB, PINB0);
 		case LBUTTON :
-		return test_bit(PINB, PINB2);
+		return test_bit(PINB, PINB3);
 		case RBUTTON :
-		return test_bit(PINB, PINB1);
+		return test_bit(PINB, PINB2);
 		default:
 		printf("Not valid button");
 		return EXIT_FAILURE;
